@@ -1,0 +1,29 @@
+[global]
+# Development settings
+developmentMode = true
+
+[server]
+# Port configuration (default: 8501)
+port = 8501
+
+# Enable CORS for development
+enableCORS = false
+enableXsrfProtection = false
+
+# File watcher settings
+runOnSave = true
+fileWatcherType = "auto"
+
+[browser]
+# Automatically open browser when starting
+gatherUsageStats = false
+
+[theme]
+# Default theme (light/dark)
+base = "light"
+
+# Custom colors (optional)
+# primaryColor = "#FF6B6B"
+# backgroundColor = "#FFFFFF"
+# secondaryBackgroundColor = "#F0F2F6"
+# textColor = "#262730"
