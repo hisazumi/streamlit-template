@@ -1,0 +1,7 @@
+{
+  "streamlit.runner.installArgs": [],
+  "streamlit.runner.runArgs": [
+    "--server.headless", "true",
+    "--server.address", "0.0.0.0"
+  ]
+}
