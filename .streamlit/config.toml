@@ -1,10 +1,10 @@
 [global]
 # Development settings
-developmentMode = true
+# developmentMode = true
 
 [server]
-# Port configuration (default: 8501)
-port = 8501
+# Port configuration is handled automatically in development mode
+# port = 8501
 
 # Enable CORS for development
 enableCORS = false
