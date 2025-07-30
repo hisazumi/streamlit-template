@@ -1,8 +1,8 @@
 {
     "recommendations": [
+        "joshrmosier.streamlit-runner",
         "ms-python.python",
-        "ms-python.black-formatter",
-        "charliermarsh.ruff",
-        "ms-python.pylint"
+        "ms-python.vscode-pylance",
+        "ms-python.debugpy"
     ]
 }
