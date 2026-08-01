@@ -16,15 +16,45 @@ GitHub CodespacesとVSCodeでの開発に最適化された、複数のStreamlit
    uv run streamlit run hello_world.py
    ```
 
-### ローカル環境
+### ローカル環境（コンテナを使わない方法）
 
-#### uv使用（推奨）
-```bash
-git clone <your-repo-url>
-cd streamlit-template
-uv sync
-uv run streamlit run hello_world.py
-```
+事前に[Git](https://git-scm.com/downloads)をインストールしてください。VS Codeを使う場合は、リポジトリを開いて「ターミナル」→「新しいターミナル」から以下のコマンドを実行できます。
+
+#### Windows（PowerShell）
+
+1. uvをインストールします。
+
+   ```powershell
+   winget install --id=astral-sh.uv -e
+   ```
+
+2. PowerShellまたはVS Codeを再起動し、アプリを準備・実行します。
+
+   ```powershell
+   git clone https://github.com/hisazumi/streamlit-template.git
+   cd streamlit-template
+   uv sync
+   uv run streamlit run hello_world.py
+   ```
+
+#### macOS（ターミナル）
+
+1. [Homebrew](https://brew.sh/)でuvをインストールします。
+
+   ```bash
+   brew install uv
+   ```
+
+2. アプリを準備・実行します。
+
+   ```bash
+   git clone https://github.com/hisazumi/streamlit-template.git
+   cd streamlit-template
+   uv sync
+   uv run streamlit run hello_world.py
+   ```
+
+起動後、ブラウザが自動で開かない場合は <http://localhost:8501> にアクセスしてください。終了するにはターミナルで `Ctrl+C` を押します。Pythonはuvが`.python-version`に従って用意するため、通常は別途インストールする必要はありません。
 
 ## 📁 プロジェクト構造
 
