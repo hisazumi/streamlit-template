@@ -26,14 +26,6 @@ uv sync
 uv run streamlit run hello_world.py
 ```
 
-#### pip使用
-```bash
-git clone <your-repo-url>
-cd streamlit-template
-pip install -r requirements.txt
-streamlit run hello_world.py
-```
-
 ## 📁 プロジェクト構造
 
 ```
@@ -46,7 +38,6 @@ streamlit-template/
 ├── .streamlit/                # Streamlit設定・シークレット
 ├── pyproject.toml             # プロジェクト設定（uv対応）
 ├── uv.lock                    # 依存関係の固定（Git管理対象）
-├── requirements.txt           # pip互換依存関係
 └── .gitignore                 # Git除外設定
 ```
 
@@ -97,14 +88,9 @@ streamlit run my_new_app.py --server.port 8502 &
 ```bash
 # uv使用
 uv add package-name
-
-# pip使用
-pip install package-name
-echo "package-name" >> requirements.txt
 ```
 
 uvを使用する場合、`uv add`は`pyproject.toml`と`uv.lock`を同時に更新します。
-`requirements.txt`を使う授業・デプロイ環境では、同じ依存関係をこちらにも追加してください。
 
 ### コード品質チェック
 
@@ -134,9 +120,11 @@ uv run pytest
 
 ### Streamlit Community Cloud
 
-1. GitHubにプッシュ
+1. `pyproject.toml`と`uv.lock`を含めてGitHubにプッシュ
 2. [share.streamlit.io](https://share.streamlit.io) でデプロイ（Python 3.12を選択）
 3. メインファイル: `hello_world.py` または作成したアプリファイル
+
+Streamlit Community Cloudは`uv.lock`を検出し、固定された依存関係をインストールします。
 
 ### その他のプラットフォーム
 
