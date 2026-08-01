@@ -5,11 +5,7 @@ Hello World App - シンプルなStreamlitアプリの例
 import streamlit as st
 
 # Page configuration
-st.set_page_config(
-    page_title="Hello World",
-    page_icon="👋",
-    layout="centered"
-)
+st.set_page_config(page_title="Hello World", page_icon="👋", layout="centered")
 
 # Main content
 st.title("👋 Hello World")

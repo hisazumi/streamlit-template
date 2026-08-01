@@ -3,6 +3,7 @@
         "joshrmosier.streamlit-runner",
         "ms-python.python",
         "ms-python.vscode-pylance",
-        "ms-python.debugpy"
+        "ms-python.debugpy",
+        "astral-sh.ruff"
     ]
 }

@@ -13,7 +13,7 @@ GitHub CodespacesとVSCodeでの開発に最適化された、複数のStreamlit
 3. **自動セットアップ完了を待機**
 4. **アプリ実行**:
    ```bash
-   streamlit run hello_world.py
+   uv run streamlit run hello_world.py
    ```
 
 ### ローカル環境
@@ -39,13 +39,13 @@ streamlit run hello_world.py
 ```
 streamlit-template/
 ├── hello_world.py             # メインアプリ
-├── data/                      # データファイル
-├── utils/                     # 共通ユーティリティ関数
-├── scripts/                   # 管理・自動化スクリプト
+├── tests/                     # Streamlit画面の自動テスト
+├── .github/workflows/         # GitHub Actions
 ├── .devcontainer/             # GitHub Codespaces設定
 ├── .vscode/                   # VSCode設定
 ├── .streamlit/                # Streamlit設定・シークレット
 ├── pyproject.toml             # プロジェクト設定（uv対応）
+├── uv.lock                    # 依存関係の固定（Git管理対象）
 ├── requirements.txt           # pip互換依存関係
 └── .gitignore                 # Git除外設定
 ```
@@ -80,16 +80,15 @@ streamlit run my_new_app.py --server.port 8502 &
 
 - **GitHub Codespaces**: 自動環境構築
 - **VSCode設定**: Python開発最適化
-- **Code Formatter**: Black
-- **Linter**: Ruff
-- **Streamlit設定**: 開発モード有効
+- **Python 3.12**: ローカル・Codespaces・デプロイ環境を統一
+- **Formatter / Linter**: Ruff
+- **自動テスト**: pytest・GitHub Actions
+- **Streamlit設定**: ポート転送・ファイル変更時の再実行
 
 ### 推奨VSCode拡張機能
 
 - Python
-- Black Formatter
 - Ruff
-- Pylint
 
 ## 🔧 カスタマイズ
 
@@ -102,6 +101,17 @@ uv add package-name
 # pip使用
 pip install package-name
 echo "package-name" >> requirements.txt
+```
+
+uvを使用する場合、`uv add`は`pyproject.toml`と`uv.lock`を同時に更新します。
+`requirements.txt`を使う授業・デプロイ環境では、同じ依存関係をこちらにも追加してください。
+
+### コード品質チェック
+
+```bash
+uv run ruff check .
+uv run ruff format --check .
+uv run pytest
 ```
 
 ### Streamlit設定
@@ -125,7 +135,7 @@ echo "package-name" >> requirements.txt
 ### Streamlit Community Cloud
 
 1. GitHubにプッシュ
-2. [share.streamlit.io](https://share.streamlit.io) でデプロイ
+2. [share.streamlit.io](https://share.streamlit.io) でデプロイ（Python 3.12を選択）
 3. メインファイル: `hello_world.py` または作成したアプリファイル
 
 ### その他のプラットフォーム

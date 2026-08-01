@@ -176,8 +176,8 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 
-# UV specific
-.python-version
+# uv creates the virtual environment locally. Commit .python-version and
+# uv.lock so every environment uses the same Python and dependency versions.
 
 # VS Code specific
 # .vscode/settings.json  # Shared settings for team
@@ -186,6 +186,7 @@ Desktop.ini
 .vscode/.ropeproject
 
 # Temporary files
+work/
 *.tmp
 *.temp
 *~

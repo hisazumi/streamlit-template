@@ -1,21 +1,22 @@
 {
   "name": "Streamlit Development Environment",
-  "image": "python:3.11-slim",
+  "image": "python:3.12-slim",
   
   "features": {
-    "ghcr.io/devcontainers/features/git:1": {},
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "20"
-    }
+    "ghcr.io/devcontainers/features/git:1": {}
   },
   
-  "postCreateCommand": "pip install -r requirements.txt && npm install -g @anthropic-ai/claude-code",
+  "postCreateCommand": "pip install --disable-pip-version-check uv && uv sync --locked --all-groups",
+
+  "remoteEnv": {
+    "PATH": "${containerWorkspaceFolder}/.venv/bin:${containerEnv:PATH}"
+  },
   
   "forwardPorts": [8501],
   "portsAttributes": {
     "8501": {
       "label": "Streamlit App",
-      "onAutoForward": "notify"
+      "onAutoForward": "openBrowser"
     }
   },
   
@@ -23,15 +24,19 @@
     "vscode": {
       "extensions": [
         "ms-python.python",
-        "ms-python.pylint",
-        "ms-python.black-formatter",
-        "charliermarsh.ruff",
-        "anthropic.claude-code"
+        "ms-python.vscode-pylance",
+        "ms-python.debugpy",
+        "astral-sh.ruff",
+        "joshrmosier.streamlit-runner"
       ],
       "settings": {
-        "python.defaultInterpreterPath": "/usr/local/bin/python",
-        "python.formatting.provider": "black",
+        "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python",
         "editor.formatOnSave": true,
+        "editor.defaultFormatter": "astral-sh.ruff",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.ruff": "explicit",
+          "source.organizeImports.ruff": "explicit"
+        },
         "files.autoSave": "afterDelay"
       }
     }
